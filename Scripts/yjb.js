@@ -1,6 +1,6 @@
 [rewrite_local]
 
-^https?:\/\/.*yangjibao\.com\/(?:wxapi\/)?account|vip_info url script-response-body https://github.com/yaney01/yaney/blob/main/Scripts/yjb.js
+^https?:\/\/.*yangjibao\.com\/(?:wxapi\/)?account|vip_info url script-response-body https://github.com/yaney01/yaney/main/Scripts/yjb.js
 [mitm] 
 
 hostname = *.yangjibao.com
