@@ -1,0 +1,52 @@
+name: Patch YouTube caption source debug
+
+on:
+  push:
+    paths:
+      - .github/workflows/patch-youtube-caption-debug.yml
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Patch caption selection and diagnostics
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          path = Path("Scripts/youtube.response.js")
+          content = path.read_text(encoding="utf-8")
+
+          old = 'let r={[e]:2},c=-1,o=Number.isInteger(t.defaultCaptionTrackIndex)&&t.defaultCaptionTrackIndex>=0&&t.defaultCaptionTrackIndex<n.length?t.defaultCaptionTrackIndex:0;'
+          new = 'let r={[e]:2},c=-1,o=0;if(Array.isArray(i)){let s=i.find(a=>Number.isInteger(a.defaultCaptionTrackIndex)&&a.defaultCaptionTrackIndex>=0&&a.defaultCaptionTrackIndex<n.length);s&&(o=s.defaultCaptionTrackIndex)}console.log(`[YT Caption] target=${e}; sourceIndex=${o}; tracks=${n.map((a,u)=>`${u}:${a.languageCode}:${a.vssId||""}`).join("|")}`);'
+
+          count = content.count(old)
+          if count != 1:
+              raise SystemExit(f"Expected exactly one target fragment, found {count}")
+
+          path.write_text(content.replace(old, new, 1), encoding="utf-8")
+          PY
+
+          node --check Scripts/youtube.response.js
+
+      - name: Commit patched script
+        shell: bash
+        run: |
+          if git diff --quiet -- Scripts/youtube.response.js; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add Scripts/youtube.response.js
+          git commit -m "fix: read caption source index from audio track"
+          git push origin HEAD:main
