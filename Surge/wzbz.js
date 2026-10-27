@@ -13,13 +13,9 @@ var ddgksf2013={
   "code" : -1,
   "data" : {
     "expires" : "2099-01-01 00:00:00",
-    "apistr" : "bzapi3",
-    "wxno3" : "momo97097",
+    "apistr" : "bzapi",
     "vipLevel" : 3,
-    "session" : "",
-    "wxno2" : "wzwh0307",
-    "wxno4" : "Zhulu50213,zhen202197,zhulu6020",
-    "wxno" : "wen2021827"
+    "session" : ""
   },
   "message" : "",
   "validateKey" : "",
