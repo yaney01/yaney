@@ -1,6 +1,6 @@
 [rewrite_local]
   
-^https?:\/\/bzpp3\.iwzbz\.com\/api\/.*\/user\/getvipinfo url script-response-body https://github.com/ddgksf2013/MoYu/raw/master/WenZhenBaZiProCrack.js
+^https?:\/\/bzpp3\.iwzbz\.com\/api\/.*\/user\/getvipinfo url script-response-body https://raw.githubusercontent.com/yaney01/yaney/refs/heads/main/Surge/wzbz.js
 
 
 [mitm] 
