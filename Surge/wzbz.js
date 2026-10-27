@@ -23,6 +23,6 @@ var ddgksf2013={
   },
   "message" : "",
   "validateKey" : "",
-  "isSuccess" : false
+  "isSuccess" : true
 };
 $done({body:JSON.stringify(ddgksf2013)});
