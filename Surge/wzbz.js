@@ -9,5 +9,20 @@ hostname=bzpp3.iwzbz.com
 
 ***********************************/
 
-var ddgksf2013={"code":-1,"data":{"vipTipsType":0,"vipLevel":3,"adtype":0,"expires":"2099-12-31 23:59:59","apistr":"bzapi"},"message":"","validateKey":"","isSuccess":true};
+var ddgksf2013={
+  "code" : -1,
+  "data" : {
+    "expires" : "2099-01-01 00:00:00",
+    "apistr" : "bzapi3",
+    "wxno3" : "momo97097",
+    "vipLevel" : 3,
+    "session" : "",
+    "wxno2" : "wzwh0307",
+    "wxno4" : "Zhulu50213,zhen202197,zhulu6020",
+    "wxno" : "wen2021827"
+  },
+  "message" : "",
+  "validateKey" : "",
+  "isSuccess" : false
+};
 $done({body:JSON.stringify(ddgksf2013)});
